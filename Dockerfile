@@ -11,6 +11,7 @@ WORKDIR /app
 RUN mkdir -p /app/landing
 
 COPY --from=builder /app/landing /landing
+COPY --from=builder static/ /app/static
 
 EXPOSE 3000
 CMD ["/landing"]

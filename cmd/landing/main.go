@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 )
 
@@ -10,7 +11,8 @@ func main() {
 
 	http.Handle("/", fs)
 
-	err := http.ListenAndServe("0.0.0.0:3000", nil)
+	fmt.Println("Running on port 3000")
+	err := http.ListenAndServe(":3000", nil)
 	if err != nil {
 		panic(err)
 	}
