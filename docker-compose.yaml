@@ -5,6 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: landing
-    ports:
-      - "3000:3000"
+    networks:
+      edge:
+        aliases:
+          - mlanding
     restart: unless-stopped
+
+networks:
+  edge:
+    external: true
+    name: edge 
