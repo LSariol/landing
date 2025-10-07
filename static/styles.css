@@ -1,0 +1,21 @@
+body {
+    background-color: #283F57;
+    margin: 0;
+    height: 100vh;                 /* full viewport height */
+    display: flex;                 /* enable flexbox */
+    flex-direction: column;        /* stack items vertically */
+    justify-content: center;       /* center vertically */
+    align-items: center;           /* center horizontally */
+    color: #ffffff;                /* text color for contrast */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.5rem;
+}
