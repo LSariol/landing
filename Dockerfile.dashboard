@@ -12,6 +12,8 @@ RUN mkdir -p /app/dashboard
 
 COPY --from=builder /app/dashboard /dashboard
 COPY static/ /app/static
+COPY templates/ /app/templates
+COPY internal/envs/links.json /app/internal/envs/links.json
 
 EXPOSE 3020
 CMD ["/dashboard"]

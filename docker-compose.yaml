@@ -2,8 +2,8 @@ name: Website
 services:
   www:
     build:
-      context: ./cmd/www
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.www
     container_name: www
     ports:
       - "3000:3000"
@@ -15,8 +15,8 @@ services:
   
   bot:
     build:
-      context: ./cmd/bot
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.bot
     container_name: bot
     ports:
       - "3010:3010"
@@ -28,8 +28,8 @@ services:
 
   dashboard:
     build:
-      context: ./cmd/dashboard
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.dashboard
     container_name: dashbaord
     ports:
       - "3020:3020"

@@ -12,6 +12,8 @@ RUN mkdir -p /app/bot
 
 COPY --from=builder /app/bot /bot
 COPY static/ /app/static
+COPY templates/ /app/templates
+COPY internal/envs/links.json /app/internal/envs/links.json
 
 EXPOSE 3010
 CMD ["/bot"]

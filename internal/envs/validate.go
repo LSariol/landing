@@ -11,7 +11,7 @@ import (
 func Load(vars []string) error {
 
 	if err := godotenv.Load(".env"); err != nil {
-		return err
+		log.Println(err)
 	}
 
 	if err := validate(vars); err != nil {

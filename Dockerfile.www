@@ -12,6 +12,8 @@ RUN mkdir -p /app/www
 
 COPY --from=builder /app/www /www
 COPY static/ /app/static
+COPY templates/ /app/templates
+COPY internal/envs/links.json /app/internal/envs/links.json
 
 EXPOSE 3000
 CMD ["/www"]
