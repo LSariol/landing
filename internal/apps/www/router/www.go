@@ -2,6 +2,8 @@ package router
 
 import (
 	"net/http"
+
+	"github.com/mobasity-web-landing/internal/router"
 )
 
 func DefineRoutes() *http.ServeMux {
@@ -14,13 +16,14 @@ func DefineRoutes() *http.ServeMux {
 	// Un
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
-			notFoundHandler(w, r)
+			router.NotFoundHandler(w, r)
 			return
 		}
 		homeHandler(w, r)
 	})
 
-	mux.HandleFunc("GET /projects", projectsHandler)
+	mux.HandleFunc("/projects", projectsHandler)
+	mux.HandleFunc("/roadmap", roadmapHandler)
 
 	return mux
 }

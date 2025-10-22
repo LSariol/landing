@@ -5,12 +5,16 @@
     <title> {{block "title" . }} Mobasity.com {{end}}</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="background-color: #283F57">
-    {{ template "navbar" . }}
-    <div class="body">
-        {{block "content" .}} {{end}}
+<body>
+    <div class="container">
+        {{template "navbar" . }}
+    
+        {{block "body" .}} {{end}}
+    
+        {{template "footer" .}}
     </div>
-    {{template "footer" . }}
+
 </body>
 </html>

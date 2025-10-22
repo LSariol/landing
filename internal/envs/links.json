@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "Home": "http://localhost:3001/",
+    "Bot": "http://localhost:3011/",
+    "Dashboard": "http://localhost:3021/",
+    "RoadMap": "http://localhost:3001/roadmap",
+    "Contact": "http://localhost:3001/contact",
+    "Support": "http://localhost:3001/support",
+    "Privacy": "http://localhost:3001/privacy",
+    "Terms": "http://localhost:3001/terms",
+    "AboutMe": "http://localhost:3001/about/me",
+    "AboutBot": "http://localhost:3001/about/bot",
+    "AboutLighthouse": "http://localhost:3001/about/lighthouse",
+    "AboutHomeServer": "http://localhost:3001/about/homeserver",
+    "AllProjects": "http://localhost:3001/about/projects"
+  },
+  "prod": {
+    "Home": "https://www.mobasity.com/",
+    "Bot": "https://bot.mobasity.com/",
+    "Dashboard": "https://dashboard.mobasity.com/",
+    "RoadMap": "https://www.mobasity.com/roadmap",
+    "Contact": "https://www.mobasity.com/contact",
+    "Support": "https://www.mobasity.com/support",
+    "Privacy": "https://www.mobasity.com/privacy",
+    "Terms": "https://www.mobasity.com/terms",
+    "AboutMe": "https://www.mobasity.com/about/me",
+    "AboutBot": "https://www.mobasity.com/about/bot",
+    "AboutLighthouse": "https://www.mobasity.com/about/lighthouse",
+    "AboutHomeServer": "https://www.mobasity.com/about/homeserver",
+    "AllProjects": "https://www.mobasity.com/about/projects"
+  }
+}

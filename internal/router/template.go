@@ -2,6 +2,7 @@ package router
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -19,6 +20,11 @@ func RenderTemplate(w http.ResponseWriter, name string, data any) {
 		return
 	}
 
-	tmpl.ExecuteTemplate(w, "layout.html", data)
+	pagedata := LoadPageData()
+
+	err = tmpl.ExecuteTemplate(w, "layout.html", pagedata)
+	if err != nil {
+		log.Printf("error executing template: %w", err)
+	}
 
 }

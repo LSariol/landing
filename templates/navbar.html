@@ -1,8 +1,18 @@
 {{define "navbar"}}
-<nav>
-    <a href="/">Home</a>
-    <a href="/Bot">Bot</a>
-    <a href="/Dashboard">Dashboard</a>
-    <a href="/projects">Projects</a>
-</nav>
+<header class="navbar">
+    <a href="{{.Navigation.Home}}">Home</a>
+    <a href="{{.Navigation.Bot}}">Bot</a>
+    <a href="{{.Navigation.Dashboard}}">Dashboard</a>
+    <a href="{{.Navigation.Roadmap}}">Roadmap</a>
+    <div class="dropdown">
+        <button class="dropdown-button">About ▼</button>
+        <div class="dropdown-content">
+            <a href="{{.Navigation.AboutMe}}">Me</a>
+            <a href="{{.Navigation.AboutBot}}">BotMoba</a>
+            <a href="{{.Navigation.AboutLighthouse}}">Lighthouse</a>
+            <a href="{{.Navigation.AboutHomeServer}}">Home Server</a>
+            <a href="{{.Navigation.AllProjects}}">All Projects</a>
+        </div>
+    </div>
+</header>
 {{end}}

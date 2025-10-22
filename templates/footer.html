@@ -1,5 +1,30 @@
 {{define "footer"}}
-<footer>
-  <small>Temporary Footer</small>
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Product</h3>
+      <ul>
+        <li><a href="{{.Navigation.Bot}}">BotMoba</a></li>
+        <li><a href="{{.Navigation.Dashboard}}">Dashboard</a></li>
+        <li><a href="{{.Navigation.AllProjects}}">Projects</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="{{.Navigation.AboutMe}}">About Me</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/support">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="copyright">© {{block "currentYear" .}}2025{{end}} Mobasity.com. All Rights Reserved.</p>
 </footer>
 {{end}}

@@ -1,10 +1,40 @@
-name: landing
+name: Website
 services:
-  landing:
+  www:
     build:
-      context: .
+      context: ./cmd/www
       dockerfile: Dockerfile
-    container_name: landing
+    container_name: www
     ports:
       - "3000:3000"
+    environment:
+      - ENV=PROD
+      - WWW_ADDRESS=0.0.0.0
+      - WWW_PORT=3000
+    restart: unless-stopped
+  
+  bot:
+    build:
+      context: ./cmd/bot
+      dockerfile: Dockerfile
+    container_name: bot
+    ports:
+      - "3010:3010"
+    environment:
+      - ENV=PROD
+      - BOT_ADDRESS=0.0.0.0
+      - BOT_PORT=3010
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: ./cmd/dashboard
+      dockerfile: Dockerfile
+    container_name: dashbaord
+    ports:
+      - "3020:3020"
+    environment:
+      - ENV=PROD
+      - DASHBOARD_ADDRESS=0.0.0.0
+      - DASHBOARD_PORT=3020
     restart: unless-stopped

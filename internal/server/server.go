@@ -3,31 +3,25 @@ package server
 import (
 	"log"
 	"net/http"
-	"os"
 	"time"
-
-	"github.com/mobasity-web-landing/internal/router"
 )
 
-func Run() {
-	srv := NewServer()
+func Run(srv *http.Server) {
 
 	log.Println("Server running on", srv.Addr)
 	log.Fatal(srv.ListenAndServe())
 
 }
 
-func Stop() {
+func Stop(srv *http.Server) {
 
+	srv.Close()
 }
 
-func NewServer() *http.Server {
-
-	mux := router.DefineRoutes()
-	addr := os.Getenv("HOST") + ":" + os.Getenv("PORT")
+func NewServer(mux *http.ServeMux, address string) *http.Server {
 
 	srv := &http.Server{
-		Addr:         addr,
+		Addr:         address,
 		Handler:      mux,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,

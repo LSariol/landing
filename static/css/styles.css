@@ -1,33 +1,684 @@
-body {
-    background-color: #1231;
+/*
+ * CORE STYLING
+ * Theme: Muted, Atmospheric Violets and Grays
+ * Palette: #F5F7F3, #847A82, #857B87, #7A707B, #1C191E
+ */
+
+/* Global Reset and Box Model */
+* {
     margin: 0;
-    height: 100vh;                 /* full viewport height */
-    display: flex;                 /* enable flexbox */
-    flex-direction: column;        /* stack items vertically */
-    justify-content: center;       /* center vertically */
-    align-items: center;           /* center horizontally */
-    color: #ffffff;                /* text color for contrast */
-    font-family: Arial, sans-serif;
-    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1 {
-    font-size: 3rem;
+/* Global Body and Font Settings */
+html, body {
+    height: 100%;
+    /* Primary Background (Canvas): #1C191E */
+    background-color: #1C191E;
+    /* Primary Text/Highlight Color: #F5F7F3 */
+    color: #F5F7F3; 
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Page Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --------------------------------------------------- */
+/* --- 1. NAVBAR STYLING (Improved Mobile Layout) --- */
+/* --------------------------------------------------- */
+
+.navbar {
+    /* Primary Background (Canvas): #1C191E */
+    background-color: #1C191E;
+    /* Border using a muted accent: #847A82 */
+    border-bottom: 2px solid #847A82; 
+    display: flex;
+    /* Allow items to wrap to the next line if they exceed the container width */
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 30px;
+    /* Set a minimum height, allowing it to expand if links wrap */
+    min-height: 60px; 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Regular Link Styling (Uniform Size & Taller Text) */
+.navbar a {
+    color: #F5F7F3; 
+    text-decoration: none;
+    min-width: 100px; /* Reduced minimum width to allow more items */
+    text-align: center;
+    padding: 10px 5px; /* Added vertical padding to ensure clickable area */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5; 
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    /* Allow links to shrink if space is tight */
+    flex-shrink: 1; 
+}
+
+/* Hover/Focus effect for regular links */
+.navbar a:hover,
+.navbar a:focus {
+    color: #F5F7F3; 
+    /* Secondary Background for hover: #7A707B */
+    background-color: #7A707B;
+    /* Primary Accent for underline: #857B87 */
+    box-shadow: inset 0 -3px 0 0 #857B87; 
+}
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    height: auto; 
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    min-width: 100px; 
+}
+
+/* Dropdown Button */
+.dropdown-button {
+    background-color: transparent;
+    border: none;
+    color: #F5F7F3;
+    cursor: pointer;
+    /* Adjusted padding to match regular links */
+    padding: 10px 5px; 
+    height: 100%;
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5; 
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.dropdown-button:hover,
+.dropdown-button:focus {
+    /* Primary Accent for button text: #857B87 */
+    color: #857B87;
+    /* Secondary Background for hover: #7A707B */
+    background-color: #7A707B;
+}
+
+/* Dropdown Content (The Menu) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    min-width: 150px; 
+    /* Secondary Background: #7A707B */
+    background-color: #7A707B; 
+    
+    border-radius: 0 0 5px 5px; 
+    /* Border using Primary Accent: #857B87 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7), 
+                0 0 0 1px #857B87; 
+    
+    z-index: 1000; 
+    padding: 6px 0;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dropdown Links Styling */
+.dropdown-content a {
+    padding: 11px 15px; 
+    text-align: left;
+    height: auto;
+    width: 100%;
+    color: #F5F7F3;
+    font-size: 15px; 
+    line-height: 1.4; 
+    transition: background-color 0.2s, color 0.2s;
+    box-sizing: border-box; 
+    min-width: auto; 
+    flex-shrink: 0;
+}
+
+.dropdown-content a:hover {
+    /* Primary Accent for background: #857B87 */
+    background-color: #857B87;
+    /* Primary Background for hover text: #1C191E */
+    color: #1C191E;
+    box-shadow: none;
+}
+
+.dropdown-content a:last-child:hover {
+    border-bottom-left-radius: 4px; 
+    border-bottom-right-radius: 4px;
+}
+
+/* --------------------------------------------------- */
+/* --- 2. MAIN CONTENT & TYPOGRAPHY --- */
+/* --------------------------------------------------- */
+
+.main-body {
+    flex: 1;
+    padding: 2rem 4rem; 
+    background-color: #1C191E;
+}
+
+.main-body h1 {
+    color: #F5F7F3;
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 1rem;
 }
 
-p {
-    font-size: 1.5rem;
+.main-body h2 {
+    /* Accent color for section titles: #857B87 */
+    color: #857B87;
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
-nav {
-
+.main-body p {
+    /* Muted text color: #C0C0C0 (Keeping the original muted gray for legibility) */
+    color: #C0C0C0; 
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: block; 
 }
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100;
+
+.short-bot-description {
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 0;
+}
+
+/* --------------------------------------------------- */
+/* --- 3. FOOTER STYLING (New Horizontal Layout & Subtle Colors) --- */
+/* --------------------------------------------------- */
+
+.footer {
+    /* Extra Dark Gray/Black: #1C191E */
+    background-color: #1C191E; 
+    border-top: 2px solid #1C191E; 
+    /* Muted Accent Color: #847A82 */
+    color: #847A82; 
+    padding: 2rem 4rem;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to wrap */
+    justify-content: space-between; 
+    align-items: flex-start;
+    max-width: 1200px; 
+    margin: 0 auto 1.5rem auto;
+    gap: 20px; 
+}
+
+.footer-section {
+    flex: 1 1 200px; 
+    min-width: 150px; 
+}
+
+/* Section Headings */
+.footer-section h3 {
+    /* Dark Muted Accent: #847A82 */
+    color: #847A82; 
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Remove list bullet points and default padding */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure list items are clean and don't take extra space */
+.footer-section li {
+    list-style: none; /* Just in case list-style: none on UL isn't enough */
+    margin: 0;
+    padding: 0;
+    line-height: 1.8; /* Keep vertical spacing between links */
+}
+
+/* Individual links */
+.footer-section a {
+    text-decoration: none;
+    /* Darker Muted Accent: #7A707B */
+    color: #7A707B; 
+    font-size: 0.9rem;
+    line-height: 1.8;
+    transition: color 0.3s ease;
+}
+
+/* Subtle accent on hover: #857B87 */
+.footer-section a:hover {
+    color: #857B87; 
+}
+
+/* Copyright text and alignment */
+.copyright {
+    color: #7A707B; /* Subtly dark copyright text */
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    border-top: 1px solid #7A707B; 
+    padding-top: 1rem;
+}
+
+/* --------------------------------------------------- */
+/* --- 4. CARD COMPONENT STYLING (Bot Page) --- */
+/* --------------------------------------------------- */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem 0;
+    background-color: transparent; 
+}
+
+/* Card Styling: Adding Subtle Gradient and Better Hover */
+.card {
+    flex: 1 1 300px;
+    max-width: 400px;
+    /* Base color is a dark gradient using the secondary background and primary background */
+    background: linear-gradient(145deg, #7A707B, #7A707B); 
+    border-radius: 12px;
+    /* Subtle glow from the accent color */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 5px rgba(133, 123, 135, 0.2);
+    /* Muted Accent Border: #847A82 */
+    border: 1px solid #847A82;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    min-height: 300px;
+}
+
+.card:hover {
+    transform: translateY(-8px); 
+    /* Stronger, more intense glow using the accent: #857B87 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 20px #857B87;
+    border-color: #857B87; /* Border lights up */
+}
+
+/* Card Header/Title Layout */
+.card-title {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    /* Ensure title contents are centered and stack vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* Card Titles (h3) */
+.card-title h3 {
+    color: #F5F7F3; /* Use soft white for title */
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 0.5rem; /* Add spacing below the title before the status */
+}
+
+/* Status Badge Styling (Now below the H3) */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    /* Add some margin below the badge to separate it from the card body */
+    margin-bottom: 0.5rem; 
+}
+
+/* Status Colors: READY */
+.status-badge.ready {
+    /* A vibrant green for "Available Now" to make it pop */
+    background-color: #5cb85c; /* Example: A standard, clear green */
+    color: #1C191E; /* Dark text for contrast */
+}
+
+/* Status Colors: COMING SOON */
+.status-badge.coming-soon {
+    /* Muted Accent for badge: #847A82 */
+    background-color: #847A82; 
+    color: #F5F7F3; /* Light text */
+}
+
+/* Card body text (Muted text is C0C0C0 for legibility) */
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    color: #C0C0C0;
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.card-body p {
+    margin: 0; 
+    text-align: center;
+}
+
+/* --------------------------------------------------- */
+/* --- BUTTON STYLING (Unified Look & Color Hierarchy) --- */
+/* --------------------------------------------------- */
+
+.card-button {
+    width: 100%;
+    margin-top: auto; 
+}
+
+/* Base button styles: Apply Muted/Waitlist style by default */
+.card-button button {
+    width: 90%; 
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    
+    /* Transparent border for outline effect */
+    border: 2px solid transparent; 
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    
+    /* Default (Waitlist) appearance */
+    color: #1C191E; 
+    background-color: #847A82; /* Muted Accent */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+}
+
+/* Default button HOVER state (Muted/Waitlist) */
+.card-button button:hover {
+    background-color: #9A91A0; /* Slightly brighter secondary for hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle hover effect */
+    transform: translateY(-1px);
+    border-color: #847A82; /* Muted Accent outline */
+}
+
+/* Primary Action Button HOVER state (Active) */
+.card-button button.active:hover {
+    background-color: #9A91A0; /* Match hover brightness with default */
+    /* Enhanced shadow effect on hover */
+    box-shadow: 0 8px 25px rgba(133, 123, 135, 1.0);
+    transform: translateY(-2px); 
+    /* Primary Accent color for the outline on hover */
+    border-color: #857B87; 
+}
+
+/* NEW RULE: Card Button Ready Green Glow (Applies to Twitch, Platform Request) */
+.card-button.ready button:hover {
+    /* Keep existing hover effects */
+    background-color: #9A91A0; 
+    transform: translateY(-2px); 
+    
+    /* Override shadow and border with green for the 'ready' state */
+    box-shadow: 0 0 15px rgba(92, 184, 92, 0.8), 0 0 25px rgba(92, 184, 92, 0.6); /* Green glow effect */
+    border-color: #5cb85c; 
+}
+
+/* --------------------------------------------------- */
+/* --- 5. LEARN MORE SECTION --- */
+/* --------------------------------------------------- */
+
+.learn-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid #7A707B; 
+}
+
+.learn-more-text {
+    max-width: 800px;
+    margin-bottom: 1.5rem;
+}
+
+.learn-more-text h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #F5F7F3;
+    margin-top: 0;
+    line-height: 1.4;
+}
+
+/* REFACTORED: Styling for the 'Learn more' button to match the primary card buttons */
+.learn-more button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    
+    /* Primary Accent color and shadow */
+    background-color: #857B87; 
+    color: #1C191E;
+    box-shadow: 0 4px 15px rgba(133, 123, 135, 0.6); 
+    border: 2px solid transparent; /* Added border for consistency */
+}
+
+.learn-more button:hover {
+    background-color: #9A91A0;
+    /* Enhanced shadow effect on hover */
+    box-shadow: 0 8px 25px rgba(133, 123, 135, 1.0);
+    transform: translateY(-2px); 
+    /* Primary Accent color for the outline on hover */
+    border-color: #857B87;
+}
+
+/* --------------------------------------------------- */
+/* --- 6. 404 PAGE STYLING (Not Found) --- */
+/* --------------------------------------------------- */
+
+/* Targeting the main H1 for the error page */
+.main-body h1:first-child { 
+    font-size: 4rem;
+    /* Primary Accent: #857B87 */
+    color: #857B87; 
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Targeting the paragraph immediately after the H1 */
+.main-body h1 + p { 
+    font-size: 1.5rem;
+    color: #C0C0C0;
+    text-align: center;
+    display: block;
+    margin-bottom: 5rem;
+}
+
+/* --------------------------------------------------- */
+/* --- 7. MOBILE OPTIMIZATION --- */
+/* --------------------------------------------------- */
+
+@media (max-width: 768px) {
+    /* Navbar Scaling */
+    .navbar a,
+    .dropdown {
+        min-width: 80px; 
+    }
+    
+    .navbar {
+        justify-content: space-around;
+        padding: 0 10px;
+        min-height: 60px; /* Ensure height expands if links wrap */
+    }
+    .navbar a {
+        padding: 0 5px;
+        font-size: 16px; 
+    }
+    .dropdown-button {
+        font-size: 16px; 
+    }
+
+    /* Main Content Scaling */
+    .main-body {
+        padding: 2rem 1rem;
+    }
+    
+    .main-body h1 {
+        font-size: 2rem;
+    }
+    
+    /* Footer stacking for mobile */
+    .footer {
+        padding: 2rem 1rem;
+    }
+    
+    .footer-content {
+        /* FIX: Force columns to stack vertically */
+        flex-direction: column; 
+        gap: 1.5rem;
+    }
+    
+    .footer-section {
+        /* Ensure sections take full width when stacked */
+        flex: 1 1 100%; 
+    }
+    
+    /* 404 Page Scaling */
+    .main-body h1:first-child {
+        font-size: 3rem;
+        margin-top: 2rem;
+    }
+    
+    .main-body h1 + p {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* --------------------------------------------------- */
+/* --- 8. ROADMAP PAGE STYLING (New Page) --- */
+/* --------------------------------------------------- */
+
+.roadmap-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    gap: 30px;
+    padding: 2rem 0;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.roadmap-column {
+    /* Set a flexible basis, allowing 3 columns on desktop */
+    flex: 1 1 300px; 
+    max-width: 400px;
+    
+    background-color: #7A707B; /* Secondary Background for the column card */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #847A82; /* Muted Accent Border */
+    
+    /* Set a specific, uniform height for the whole column */
+    height: 600px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.roadmap-column-title {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* Unified Border Color */
+    border-bottom: 2px solid #847A82;
+    text-align: center;
+    flex-shrink: 0; 
+}
+
+/* Updated to target H2 and set a unified color */
+.roadmap-column-title h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    /* Unified Title Color */
+    color: #F5F7F3; 
+}
+
+/* Scrollable Container for the List */
+.roadmap-column-content-scroll {
+    flex-grow: 1; 
+    overflow-y: auto; /* Enables vertical scrolling when content exceeds height */
+    padding-right: 15px; /* Space for the scrollbar */
+}
+
+/* Primary List Styling (Parent Bullets) */
+.roadmap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.roadmap-list > li {
+    list-style-type: none;
+    color: #F5F7F3;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(245, 247, 243, 0.15); /* Soft, dashed divider */
+    line-height: 1.4;
+}
+
+.roadmap-list > li:last-child {
+    border-bottom: none;
+}
+
+/* Sub-List Styling (Child Bullets) */
+.roadmap-list ul {
+    padding-left: 20px; 
+    padding-top: 5px;
+    list-style-type: disc; /* Use standard bullets for sub-items */
+}
+
+.roadmap-list ul li {
+    font-size: 1rem;
+    padding: 3px 0;
+    color: #C0C0C0; /* Muted text color for sub-bullets */
+    border-bottom: none; 
+}
+
+@media (max-width: 768px) {
+    .roadmap-column {
+        height: auto; /* Remove fixed height on mobile */
+        min-height: 350px;
+    }
 }
